@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>搜索页</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+
+<div class="banshi_list mt20">
+	<ul>
+		{dede:list pagesize='8'}
+    	<li><a href="[field:arcurl/]">[field:title/]<span>></span></a></li>
+		{/dede:list}
+    </ul>
+
+
+</div>
+<script language="javascript">
+var stop=true; 
+var id='{dede:field.typeid/}';
+if(id==''){
+id=0;
+}else{
+id=parseInt(id);
+}
+var page=2;
+$(window).scroll(function(){ 
+    totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop())+100; 
+    if($(document).height() <= totalheight){ 
+        if(stop==true){ 
+            stop=false; 
+			$.post("/member/ajax_wapload.php",
+				{
+			id:id,
+			p:page
+			  },
+			  function(data,status){
+			  $(".banshi_list").html($(".banshi_list").html()+data); 
+			page++;
+			stop=true; 
+			  });
+						   
+			}
+    }
+});
+</script>
+</body>
+</html>
+

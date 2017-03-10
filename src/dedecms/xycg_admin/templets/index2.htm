@@ -1,0 +1,177 @@
+<!--This is IE DTD patch , Don't delete this line.-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312 echo $cfg_soft_lang; ?>">
+<title>后台管理</title>
+<link href="css/frame.css" rel="stylesheet" type="text/css" />
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<script src="js/frame.js" language="javascript" type="text/javascript"></script>
+<link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#skinlist {
+    display: block;
+    height: 11px;
+	margin-top: 10px;
+    overflow: hidden;
+    width: 86px;
+}
+#skin div {
+    float: left;
+}
+#skin li {
+    cursor: pointer;
+    float: left;
+    height: 11px;
+    width: 14px;
+}
+#def div, #s1 div, #s2 div, #s3 div, #s4 div{
+    background-image: url("images/skinbutton.png");
+    background-repeat: no-repeat;
+}
+#s1 div {
+    background-position: 0 0px;
+}
+#s2 div {
+    background-position: 0 -11px;
+}
+#s3 div {
+    background-position: 0 -22px;
+}
+#s4 div {
+    background-position: 0 -33px;
+}
+#s1 div.sel {
+    background: url("images/skinbutton.png") no-repeat scroll -14px top transparent;
+}
+#s2 div.sel {
+    background: url("images/skinbutton.png") no-repeat scroll -14px -11px transparent;
+}
+#s3 div.sel {
+    background: url("images/skinbutton.png") no-repeat scroll -14px -22px transparent;
+}
+#s4 div.sel {
+    background: url("images/skinbutton.png") no-repeat scroll -14px -33px transparent;
+}
+
+
+</style>
+</head>
+<body class="showmenu">
+<div class="pagemask"></div>
+<iframe class="iframemask"></iframe>
+<div class="allmenu">
+  <div class="allmenu-box">
+    <?php
+	echo $mapstring;
+?>
+    <br style='clear:both' />
+  </div>
+</div>
+<div class="head">
+  <div class="top">
+    <div class="top_logo" style="font-family:"微软雅黑";"> <a href="#" title="" onclick="JumpFrame('index_menu.php','index_body.php');"><img src="images/style<?php echo $cfg_admin_skin;?>/admin_top_logo.jpg" alt="DedeCms Logo" title="Welcome use DedeCms" id="topdedelogo"  border="0"/> </a></div>
+    <div class="top_link">
+      <ul>
+        <li class="welcome">
+		您好：<a href="#" title="" onclick="JumpFrame('index_menu.php','sys_admin_user.php');"><?php echo $cuserLogin->getUserName(); ?></a>
+		<a href="exit.php" target="_top">[退出]</a>
+		<a href="#" onclick="JumpFrame('index_menu.php','sys_info.php');">[设置]</a></li>
+        <li><a href="index_menu.php" target="menu">左菜单</a></li>
+        <li><a href="#" onclick="JumpFrame('index_menu.php','index_body.php');">系统主页</a></li>
+        <li><a href="../index.html" target="_blank" style="display:block; background:url(images/index.gif) no-repeat 5px top; padding-left:25px;">预览首页</a></li>
+		<li style="width:30px; height:15x;"></li>
+		<li><a href="#" onclick="JumpFrame('index_menu.php','makehtml_homepage.php');" style="color:#E1FEFF;">更新首页</a></li>
+		<li><a href="#" onclick="JumpFrame('index_menu.php','makehtml_list.php');" style="color:#E1FEFF;">更新栏目</a></li>
+		<li><a href="#" onclick="JumpFrame('index_menu.php','makehtml_archives.php');" style="color:#E1FEFF;">更新内容</a></li>
+		<li><a href="#" onclick="JumpFrame('index_menu.php','makehtml_all.php');" style="color:#E1FEFF;">一键更新</a></li>
+		<li><a href="#" onclick="JumpFrame('index_menu.php','sys_cache_up.php');" style="color:#E1FEFF;">更新缓存</a></li>
+      </ul>
+      
+  </div>
+  <div class="quick"> <a href="#" class="ac_qucikmenu" id="ac_qucikmenu">快捷管理</a> <a href="#" class="ac_qucikadd" id="ac_qucikadd">
+        <!--ADD-->
+        </a> </div>
+    </div>
+ <!--<div class="topnav">
+    <div class="menuact">
+      	<a href="#" id="togglemenu">隐藏菜单</a>
+    </div>
+   
+    <div class="nav" id="nav"> </div>
+  </div>-->
+</div>
+<div class="left"  >
+  <div class="menu" id="menu"> 
+    <iframe src="index_menu.php" id="menufra" name="menu" frameborder="0"></iframe>
+  </div>
+</div>
+
+<div class="right">
+  <div class="main" >
+  	<div style="background:#eee; margin:0; padding:0;  height:3px; background:#fff url(images/abbbbb.jpg) no-repeat  left top; overflow:hidden;"></div>
+	<a href="#" id="togglemenu" style=" position:absolute; top:200px; overflow:hidden; font-size:12px; text-decoration:none; color:#3B6EA5; height:80px; left:0px; line-height:80px; display:block; width:13px; background:url(images/b1.jpg) no-repeat;"></a>
+    <iframe id="main" name="main" frameborder="0" src="index_body.php"></iframe>
+  </div>
+  <!--<div id="help"><span id="content"><a href="#">栏目管理操作使用说明</a></span></div>-->
+</div>
+<div class="qucikmenu" id="qucikmenu">
+  <ul>
+    <?php
+      $dtp = new DedeTagparse();
+      $dtp->SetNameSpace('menu','<','>');
+      $dtp->LoadTemplet($myIcoFile);
+      if(is_array($dtp->CTags))
+      {
+         foreach($dtp->CTags as $ctag)
+         {
+         		$title = $ctag->GetAtt('title');
+         		$ico = $ctag->GetAtt('ico');
+         		$link = $ctag->GetAtt('link');
+         		echo "<li><a href='{$link}' target='main'>{$title}</a></li>\r\n";
+      		}
+			}
+	 ?>
+  </ul>
+</div>
+<script language="javascript">
+function JumpFrame(url1, url2){
+    jQuery('#menufra').get(0).src = url1;
+    jQuery('#main').get(0).src = url2;
+}
+(function($)
+{
+ 	$("#skinlist>li").click(function()
+	 {
+		 var adminskin = $(this).index() + 1;
+		 var csshref = "images/style"+adminskin+"/style.css";
+		 $("#skinlist>li").each(function(){$(this).children('div').attr('class', '')});
+		 $("#topdedelogo").attr('src', 'images/style'+adminskin+'/admin_top_logo.gif')
+		 $('link').each(function()
+		 {
+			 if($(this).attr('href').match(/style.css$/))
+			 {
+				 $(this).attr('href',csshref);
+			 }
+		 });
+		 $(this).children('div').attr('class', 'sel');
+		 $(window.frames["menu"].document).find("link").each(function()
+		 {
+			 if($(this).attr('href').match(/style.css$/))
+			 {
+				 $(this).attr('href',csshref);
+			 }
+		 });
+		 $(window.frames["main"].document).find("link").each(function()
+		 {
+			 if($(this).attr('href').match(/style.css$/))
+			 {
+				 $(this).attr('href',csshref);
+			 }
+		 });
+		 $.get('index_body.php?dopost=setskin&cskin='+adminskin);
+	 });
+})(jQuery);
+</script>
+</body>
+</html>

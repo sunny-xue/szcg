@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微服务</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+
+<div class="search">
+<form action="/plus/search.php" name="formsearch"> 
+<input type="hidden" name="kwtype" value="0" /> 
+<input type="hidden" name="searchtype" value="titlekeyword" /> 
+<input type="hidden" name="typeid" value="9" /> 
+<input type="text" name="search" value="" placeholder="搜索" speech x-webkit-speech />
+</form>
+</div>
+<div class="banshi_list mt20">
+	<ul>
+		<li><a href="/html/weifuwu/kepuzhishi/44.html">中华人民共和国安全生产法<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/falvfagui/38.html">中华人民共和国公务员法<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/falvfagui/37.html">中华人民共和国城乡规划法<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/falvfagui/35.html">中华人民共和国消防法<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/chengshijianshe/47.html">大力加强公共基础设施<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/huanbaozhishi/32.html">你听过“碳足迹”吗？如何减少碳排放呢？<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/huanbaozhishi/31.html">关于“地球一小时”<span>></span></a></li><li><a href="/html/weifuwu/kepuzhishi/huanbaozhishi/30.html">人类环境宣言<span>></span></a></li>
+    </ul>
+
+
+</div>
+<script language="javascript">
+var stop=true; 
+var id='9';
+if(id==''){
+id=0;
+}else{
+id=parseInt(id);
+}
+var page=2;
+$(window).scroll(function(){ 
+    totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop())+100; 
+    if($(document).height() <= totalheight){ 
+        if(stop==true){ 
+            stop=false; 
+			$.post("/member/ajax_wapload.php",
+				{
+			id:id,
+			p:page
+			  },
+			  function(data,status){
+			  $(".banshi_list").html($(".banshi_list").html()+data); 
+			page++;
+			stop=true; 
+			  });
+						   
+			}
+    }
+});
+</script>
+</body>
+</html>
+

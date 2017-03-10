@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.title/}</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+<div class='banner w640 center'>
+  <div class='banner_ul hd'>
+    <ul>
+    </ul>
+  </div>
+  <div class='banner_img bd'>
+    <ul>
+		<li><a href='#'><img src="/public/images/banner.jpg" height="380"></a></li>
+    </ul>
+  </div>
+</div>
+<script>jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+<div class="baoliao">
+	<div class="wx_tit"><img src="/public/images/tx.png">用户微信名称</div>
+	<div class="blxq"><p>{dede:field.desc/}</p></div>
+    <div class="add">{dede:field.add/}</div>
+    <div class="add"><a href="javascript:;" id="clxq">处理详情<span>></span></a></div>
+</div>
+<div  class="xiangqing_a">
+<div class="baoliao mt20" id="baoliao" style="display:block;" >
+	<div class="add add_a"><font>当前进度</font><span>{dede:field.dqjd/}</span></div>
+	<div class="add"><font>处理时限</font>{dede:field.clsx/}</div>
+	<div class="add"><font>责任单位</font>{dede:field.zrdw/}</div>
+	<div class="add"><font>累计用时</font>{dede:field.ljys/}</div>
+</div>
+</div>
+<div id="xiangqing" style="display:none;" class="xiangqing_a">
+<div class="slh"><span>受理号：</span>{dede:field.slh/}</div>
+<div class="baoliao mt20">
+	<div class="xiangqing">
+		<div class="danwei on"><img src="/public/images/b2.png"><h3>责任单位处理</h3><p>{dede:field.zrdw/}</p></div>
+		{dede:field name='array' runphp='yes'}@me = (empty(@me['jbdw1']) ? "" : "<div class='danwei'><img src='/public/images/b3.png'><h3>责任单位处理<span>{@me['jbdwsj']} </span></h3><p>{@me['jbdw1']}</p><p>{@me['jbdw1yj']}</p></div>"); {/dede:field}
+		{dede:field name='array' runphp='yes'}@me = (empty(@me['jbdw2']) ? "" : "<div class='danwei'><img src='/public/images/b3.png'><h3>责任单位处理<span>{@me['jbdw2sj']}</span></h3><p>{@me['jbdw1']}</p><p>{@me['jbdw2yj']}</p></div>"); {/dede:field}
+		
+	</div>
+</div>
+</div>
+<div class="baoliao mt20">
+	<div class="guanzhu">
+    	<p>关注此爆料<div class="wrap on"><span></span><span></span><div></div></div></p>
+    </div>
+	
+</div>
+<div class="guanzhu_a">关注此爆料后，可以在“我的爆料”里找到。</div>
+
+<!-- <div class="bl_foot">
+	<ul>
+    	<li><a href="/html/weibaoliao"><img src="/public/images/hot.png"><p>热门爆料</p></a></li>
+    	<li><a href="/html/weibaoliao/remenzuixinbaoliao"><img src="/public/images/new.png"><p>最新爆料</p></a></li>
+    	<li class="hover"><a href="/html/weibaoliao/wodebaoliao"><img src="/public/images/ren.png"><p>我的爆料</p></a></li>
+    	<li class="on"><a href="/member/article_add.php"><img src="/public/images/bl.png"><p>我要爆料</p></a></li>
+    </ul>
+</div> -->
+<script type="text/javascript">
+
+var oBtn = document.getElementById('clxq');
+var oDiv1 = document.getElementById('baoliao');
+var oDiv2 = document.getElementById('xiangqing');
+oBtn.onclick = function(){
+	if(oDiv1.style.display == 'block'){
+		oDiv1.style.display = 'none';
+		oDiv2.style.display = 'block';
+	}else{
+		oDiv2.style.display = 'none';
+		oDiv1.style.display = 'block';
+	}
+};
+$(".wrap").click(function(event) {
+	if ($(".wrap").attr("class") == "wrap on") {
+		$(".wrap div").stop().animate({
+			"left" : "0px"
+		},400),
+		$(".wrap").attr("class","wrap off")
+	}else {
+		$(".wrap div").stop().animate({
+			"left" : "27px"
+		},400),
+		$(".wrap").attr("class","wrap on")
+	}
+});
+</script>
+</body>
+</html>

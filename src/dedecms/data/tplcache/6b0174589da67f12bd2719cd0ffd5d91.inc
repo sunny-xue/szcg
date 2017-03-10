@@ -1,0 +1,1 @@
+<li><img src="[field:litpic/]"><h3>[field:title/]</h3><p>[field:description function='cn_substr(@me,60)'/]...</p><span>拉票评比中</span></li>

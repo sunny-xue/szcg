@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.title/}</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+</head>
+
+<body>
+<div class='banner w640 center'>
+  <div class='banner_ul hd'>
+    <ul>
+    </ul>
+  </div>
+  <div class='banner_img bd'>
+    <ul>
+		<li><a href='#'><img src="/public/images/wm.png" height="343"></a></li>
+    </ul>
+  </div>
+</div>
+<script>jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+<div class="wmjjh_xq">
+	<div class="jjh_tit">{dede:field.title/}</div>
+	<p><span>报名截止：</span>{dede:field.bmjz/}</p>
+    <p><span>活动时间：</span>{dede:field.hdsj/}</p>
+    <p><span>活动地点：</span>{dede:field.hddd/}</p>
+    <p><span>举办单位：</span>{dede:field.jbdw/}</p>
+    <p><span>报名方式：</span>{dede:field.bmfs/}</p>
+    <p><span>参加要求：</span>{dede:field.cjyq/}</p>
+    <p><span>注意事项：</span>{dede:field.zysx/}</p>
+</div>
+
+
+</body>
+</html>

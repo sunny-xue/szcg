@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.typename/}</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+<div class="b8"><img src="/public/images/b8.png"></div>
+{dede:list pagesize='20' channelid="17" addfields='clsx'}
+<div class="baoliao_list">
+	<div class="list_a"><img src="/public/images/[field:global name=autoindex runphp=yes]@me=((@me>2)?'b9':'b6');[/field:global].png"></div>
+    <div class="list_b">
+    	<a href="[field:arcurl/]"><img src="[field:litpic/]"></a>
+    	<div class="tit_a"><a href="[field:arcurl/]">[field:description function='cn_substr(@me,80)'/]...</a></div>
+    	<div class="list_c">道路清洁</div>
+        <p>[field:add/]</p>
+        <p>[field:clsx/]</p>
+    </div>
+	<div class="cl"></div>
+</div>
+{/dede:list}
+
+<div class="bl_foot">
+	<ul>
+    	<li><a href="/html/weibaoliao"><img src="/public/images/hot.png"><p>热门爆料</p></a></li>
+    	<li class="hover"><a href="/html/weibaoliao/remenzuixinbaoliao"><img src="/public/images/new_hover.png"><p>最新爆料</p></a></li>
+    	<li><a href="/html/weibaoliao/wodebaoliao"><img src="/public/images/ren.png"><p>我的爆料</p></a></li>
+    	<li class="on"><a href="/member/article_add.php"><img src="/public/images/bl.png"><p>我要爆料</p></a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312 echo $cfg_soft_lang; ?>">
+<title>ifc menu</title>
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<script language="javascript" type="text/javascript" src="../include/js/dedeajax2.js"></script>
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<?php
+echo "<script language='javascript'>var curopenItem = '$openitem';</script>\r\n";
+?>
+<script language="javascript" type="text/javascript" src="js/leftmenu.js"></script>
+<style>
+div {
+	padding:0px;
+	margin:0px;
+}
+body {
+	padding:0px;
+	margin:auto;
+	text-align:center;
+	background-color:#103D67;
+	padding-left:3px;
+	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	scrollbar-face-color: #103D67;
+	scrollbar-shadow-color: #103D67;
+	scrollbar-highlight-color: #103D67;
+	scrollbar-3dlight-color: #103D67;
+	scrollbar-darkshadow-color: #103D67;
+	scrollbar-base-color: #103D67;
+	scrollbar-track-color: #103D67;
+	scrollbar-arrow-color: #103D67;
+	
+}
+dl.bitem {
+	clear:both;
+	width:140px;
+	margin:0px 0px 5px 12px;
+	background:url(images/menunewbg.gif) repeat-x;
+}
+
+
+dl.bitem2 {
+	clear:both;
+	width:140px;
+	margin:0px 0px 5px 12px;
+	background:url(images/menunewbg2.gif) repeat-x;
+}
+dl.bitem dt, dl.bitem2 dt {
+	height:25px;
+	line-height:25px;
+	padding-left:10px;
+	cursor:pointer;
+}
+dl.bitem dt b, dl.bitem2 dt b {
+	color:#243E4D;
+	font-size:14px;
+}
+dl.bitem dd, dl.bitem2 dd {
+	padding:3px 3px 3px 10px;
+	background-color:#EAF0F3;
+}
+
+
+div.items {
+	clear:both;
+	padding:0px;
+	height:0px;
+}
+.fllct {
+	float:left;
+	width:85px;
+}
+
+.fllct  a{
+	color:#48575A;}
+.flrct {
+	padding-top:3px;
+	float:left;
+}
+.sitemu li {
+	padding:0px 0px 0px 3px;
+	line-height:25px;
+	height:25px;
+}
+.sitemu li a{
+	color:#32556B;
+	display:block;
+	background:url(images/aaa.gif) no-repeat left center;
+	padding-left:7px;}
+	
+	.sitemu li a:visited{
+		color:#32556B;}
+	
+	.sitemu li a:hover{
+		display:block;
+		color:#FFB436;
+		font-weight:bold;
+		text-decoration:underline;
+		/**background:url(images/aaa2.gif) no-repeat left center;**/}
+		
+	
+ul {
+	padding-top:3px;
+}
+li {
+	height:22px;
+}
+a.mmac div {
+	background:url(images/leftbg2.gif) no-repeat;
+	height:37px!important;
+	height:45px;
+	padding:5px 4px 4px 10px;
+	word-wrap: break-word;
+	word-break : break-all;
+	font-weight:bold;
+	color:#fff;
+	margin:0px 0;
+	overflow:hidden;
+	
+}
+a.mm div {
+	background:url(images/leftmbg1.gif) no-repeat left center;
+	height:37px!important;
+	height:45px;
+	padding:5px 4px 4px 10px;
+	word-wrap: break-word;
+	word-break : break-all;
+	color:#666;
+	cursor:pointer;
+	overflow:hidden;
+}
+
+.mmf {
+	height:1px;
+	padding:5px 7px 5px 7px;
+}
+#mainct {
+	background: url(images/idnbg1.gif) repeat-y;
+}
+</style>
+<link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
+<base target="main" />
+</head>
+<body target="main" onLoad="CheckOpenMenu();">
+<table width="180" align="left" border='0' cellspacing='0' cellpadding='0' style="text-align:left;" >
+  <tr>
+    <td valign='top' style='padding-top:34px' width='20'><a id='link1' class='mmac'>
+      <div onClick="ShowMainMenu(1)">核心</div>
+      </a> <a id='link100' class='mm'>
+      <div onClick="ShowMainMenu(100)">模块</div>
+      </a> <a id='link5' class='mm'>
+      <div onClick="ShowMainMenu(5)">生成</div>
+      </a> <a id='link3' class='mm'>
+      <div onClick="ShowMainMenu(3)">采集</div>
+      </a> <a id='link6' class='mm'>
+      <div onClick="ShowMainMenu(6)">会员</div>
+      </a>
+      <?php
+  	if($cuserLogin->getUserType() >= 10) {
+  	?>
+      <a id='link7' class='mm'>
+      <div onClick="ShowMainMenu(7)">模板</div>
+      </a> <a id='link10' class='mm'>
+      <div onClick="ShowMainMenu(10)">系统</div>
+      </a>
+      <?php
+  	}
+  	?>
+      <div class='mmf'></div></td>
+    <td width='160' id='mainct' valign="top">
+	<div><img src='images/idnbgfoot2.jpg' border="0" usemap="#Map" /></div>
+	<div id='ct1'>
+        <?php
+GetMenus($cuserLogin->getUserRank(), 'main');
+?>
+      </div>
+      <div id='ct100'></div>
+      <div id='ct3'></div>
+      <div id='ct5'></div>
+      <div id='ct6'></div>
+      <div id='ct7'></div>
+      <div id='ct20'></div>
+      <div id='ct10'></div></td>
+  </tr>
+  <tr>
+    <td width='26'></td>
+    <td width='160' valign='top'><img src='images/idnbgfoot.gif' /></td>
+  </tr>
+</table>
+<?php
+if(!empty($openitem) && $openitem!=1)
+{
+?>
+<script language='javascript'>
+	ShowMainMenu(100);
+</script>
+<?php
+}
+?>
+<script language="javascript">
+function myAlert()
+{
+	alert('dede');	
+}
+</script>
+
+<map name="Map" id="Map">
+    <area shape="rect" coords="2,2,79,36" href="catalog_do.php?channelid=0&cid=0&dopost=addArchives"/>
+<area shape="rect" coords="84,1,158,35" href="content_list.php"  /></map></body>
+</html>

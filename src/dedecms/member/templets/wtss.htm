@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>问题上诉</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+ <style>
+         body{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+        }
+        iframe{
+            width: 100%;
+            height: 100%;
+			display:none;
+			z-index:9999;
+        }
+      
+       
+    </style> 
+</head>
+
+<body>
+
+<form id="formView" name="addcontent" action="wtss.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+<div class="wtss">
+	<div class="wtss_a">
+	<input type="hidden" name="dopost" value="save" />
+	<input type="hidden" name="channelid" value="19" />
+	<input type="hidden" name="typeid" value="2" />
+	<input type="hidden" name="writer" id="writer" value="<?php echo $cfg_ml->M_UserName?>" maxlength="100" class="intxt" style="width:219px"/>
+
+	<textarea rows="3" cols="20" name="title" id="title" placeholder="请输入问题描述(10-100个字)，如：XXXX街道公共设施损坏..." onkeydown="checkMaxInput(this,100)" onkeyup="checkMaxInput(this,100)" onfocus="checkMaxInput(this,100)" onblur="checkMaxInput(this,100);resetMaxmsg()"></textarea>
+    <div class="yxia">100</div>
+	<div class="wtss_img">
+    	<ul>
+        	<li id="localImag"><img id="preview" src="" /></li>
+            <li class="litpic_c"><input type="file" name="litpic" id="litpic" multiple onchange="javascript:setImagePreview();"><img src="/public/images/jia.jpg"></li>
+            <div class="cl"></div>
+        </ul>
+    </div>
+    </div>
+    <div class="wt_fl"><span>问题分类</span><input type="text" value="未选择"><a href="javascript:void();" style="color:#CCCCCC;">&gt;</a></div>
+<!--     <div class="wt_fl"><input type="hidden" name="title" value=""></div> -->
+    <div class="wt_add"><span>地点</span><input id="locationtxt" type="text" name="add" value=""><a  onclick="javascript:searchNear();" href="javascript:void();" style="color:#CCCCCC;">&gt;</a></div>
+    <div class="wt_tel"><span></span><input type="text" name="tel" placeholder="请输入联系方式"></div>
+
+    <div class="submit_wt"><input type="submit" name="submit_wt" value="发布"></div>
+	
+</div>
+
+</form>
+<iframe id="mapView"  src='https://m.amap.com/picker/?key=462b725bba8d4aeeae457e694afe7aed'></iframe>
+
+    <script>
+        (function(){
+            var iframe = document.getElementById('mapView').contentWindow;
+            document.getElementById('mapView').onload = function(){
+                iframe.postMessage('hello','https://m.amap.com/picker/');
+            };
+            window.addEventListener("message", function(e){
+			document.getElementById('locationtxt').value=e.data.name; 
+                //alert('您选择了:' + e.data.name + ',' + e.data.location)
+				document.getElementById('formView').style.display="inherit";
+                 document.getElementById('mapView').style.display="none";
+            }, false);
+        }())
+		
+		function searchNear(){
+		document.getElementById('formView').style.display="none";
+		 document.getElementById('mapView').style.display="inherit";
+		}
+    </script>
+<script type="text/javascript">
+            //下面用于图片上传预览功能
+            function setImagePreview(avalue) {
+            //input
+                var docObj = document.getElementById("litpic");
+//img
+                var imgObjPreview = document.getElementById("preview");
+                //div
+                var divs = document.getElementById("localImag");
+                if (docObj.files && docObj.files[0]) {
+                    //火狐下，直接设img属性
+                    imgObjPreview.style.display = 'block';
+                    imgObjPreview.style.width = '134px';
+                    imgObjPreview.style.height = '134px';
+                    //imgObjPreview.src = docObj.files[0].getAsDataURL();
+                    //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+                   imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+                } else {
+                    //IE下，使用滤镜
+                    docObj.select();
+                    var imgSrc = document.selection.createRange().text;
+                    var localImagId = document.getElementById("localImag");
+                    //必须设置初始大小
+                    localImagId.style.width = "134px";
+                    localImagId.style.height = "134px";
+                    //图片异常的捕捉，防止用户修改后缀来伪造图片
+                    try {
+                        localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                        localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+                    } catch(e) {
+                        alert("您上传的图片格式不正确，请重新选择!");
+                        return false;
+                    }
+                    imgObjPreview.style.display = 'none';
+                    document.selection.empty();
+                }
+                return true;
+            }
+        </script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+	$("#title").keydown(function(){
+		var curLength=$("#title").val().length;	
+		if(curLength>=101){
+			var num=$("#title").val().substr(0,100);
+			$("#title").val(num);
+			alert("超过字数限制，多出的字将被截断！" );
+		}
+		else{
+			$(".yxia").text(100-$("#title").val().length)
+		}
+	})
+})
+</script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312 echo $cfg_soft_lang; ?>">
+<title>广告分类管理</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body background="images/allbg.gif" leftmargin="8" topmargin='8'>
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#D6D6D6">
+  <form name="form1" action="adtype_main.php" method="post">
+    <tr>
+      <td height="28" bgcolor="#ffffff"colspan="7" style="padding-left:10px;"><input type="hidden" name="dopost" value="save"/><span style="font-size:16px; color:#467A00; font-weight:bold;">广告分类管理</span>&nbsp;<a href="ad_main.php" style="color: #FF6600; font-weight:bold;">[广告管理]</a></td>
+    </tr>
+    <tr bgcolor="#EEF3F7">
+      <td width="5%" height="20" align="center" valign="top">类型ID</td>
+      <td width="59%" align="center" valign="top">广告分类</td>
+      <td width="36%" align="center">状态</td>
+    </tr>
+	<tr height="15"><td colspan="3" style="background:#fff;"></td></tr>
+    <?php
+	$dsql->SetQuery("Select * From #@__myadtype");
+	$dsql->Execute();
+	$k=0;
+	while($row = $dsql->GetObject())
+	{
+      $k++;
+	?>
+	
+    <tr align="center" bgcolor="#FFFFFF">
+      <td height="40" valign="middle">    <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id; ?></td>
+      <td height="40" valign="middle"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90% ;border:1px solid #eee;border-top:none; border-left:none; border-right:none; height:20px; line-height:20px; "/></td>
+      <td align="left" style="color:#888;"><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>"  value="1" checked='1' class='np' />
+        保留 </td>
+    </tr>
+    <?php
+	}
+	?>
+    <input type="hidden" name="idend" value="<?php echo $k?>">
+    <tr >
+      <td height="24" colspan="3" valign="top" bgcolor="#ffffff"><strong>新增一个广告类型：</strong></td>
+    </tr>
+    <tr height="24" align="center" bgcolor="#FFFFFF">
+      <td colspan="2" valign="top"><input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%; height:30px; border:1px solid #69AE00; line-height:30px; padding-left:15px;"  /></td>
+      <td bgcolor="#FFFFFF" align="left"><input name="check_new" type="checkbox"  id="check_new" value="1" checked='1' class='np' />
+        新增 </td>
+    </tr>
+    <tr>
+      <td height="34" colspan="3" align="left" bgcolor="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="imageField"  type="submit" class="np coolbg" value="确定" style="width:99px; height:27px; background:url(images/inputbg4.gif); border:none; color:#fff;"/></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

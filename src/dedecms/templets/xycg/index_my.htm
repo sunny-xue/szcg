@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.typename/}</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+</head>
+
+<body>
+<div class="my_bl">
+	<ul>
+    	<li id="hbzjtd1" onclick="set('hbzjtd',1,2)" class="hover">我发布的</li>
+    	<li id="hbzjtd2" onclick="set('hbzjtd',2,2)">我关注的</li>
+    </ul>
+    <!-- <div class="search_s"><img src="/public/images/serach.png"></div> -->
+    <div class="cl"></div>
+</div>
+<div class="" id="conhbzjtd1" style="display:block;">
+	{dede:arclist typeid='3' orderby='hot'}
+	<div class="baoliao_art [field:global name=autoindex runphp=yes]@me=((@me-1)?'':'mt20');[/field:global]">
+	<div class="wx_tit"><img src="/public/images/tx.png">信仰小市民<span>摆摊乱占道</span></div>
+	<div class="bl_con">
+		<div class="bl_con_a">
+			<a href="[field:arcurl/]"><img src="/public/images/b5.png" class="slt"></a>
+			<p>[field:title/]</p>
+		</div>
+		<div class="bl_con_b">
+		<p>[field:description/]  </p>
+		</div>
+		<div class="bl_con_c">
+			<p>责任单位处理中<span>[field:click/]</span></p>
+		</div>
+	</div>
+	</div>
+	{/dede:arclist}
+</div>
+<div class="" id="conhbzjtd2" style="display:none;">
+	{dede:arclist typeid='3' orderby='hot'}
+	<div class="baoliao_art [field:global name=autoindex runphp=yes]@me=((@me-1)?'':'mt20');[/field:global]">
+	<div class="wx_tit"><img src="/public/images/tx.png">信仰小市民<span>摆摊乱占道</span></div>
+	<div class="bl_con">
+		<div class="bl_con_a">
+			<a href="[field:arcurl/]"><img src="/public/images/b5.png" class="slt"></a>
+			<p>[field:title/]</p>
+		</div>
+		<div class="bl_con_b">
+		<p>[field:description/]  </p>
+		</div>
+		<div class="bl_con_c">
+			<p>责任单位处理中<span>[field:click/]</span></p>
+		</div>
+	</div>
+	</div>
+	{/dede:arclist}
+</div>
+<div class="bl_foot">
+	<ul>
+    	<li><a href="/html/weibaoliao"><img src="/public/images/hot.png"><p>热门爆料</p></a></li>
+    	<li><a href="/html/weibaoliao/remenzuixinbaoliao"><img src="/public/images/new.png"><p>最新爆料</p></a></li>
+    	<li class="hover"><a href="/html/weibaoliao/wodebaoliao"><img src="/public/images/ren_hover.png"><p>我的爆料</p></a></li>
+    	<li class="on"><a href="/member/article_add.php"><img src="/public/images/bl.png"><p>我要爆料</p></a></li>
+    </ul>
+</div>
+
+<script>
+function set(name,cursel,n){for(i=1;i<=n;i++){var menu=document.getElementById(name+i);var con=document.getElementById("con"+name+i);menu.className=i==cursel?"hover":"";con.style.display=i==cursel?"block":"none"}}
+</script>
+</body>
+</html>

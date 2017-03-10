@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.typename/}</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+<div class='banner w640 center'>
+  <div class='banner_ul hd'>
+    <ul>
+    </ul>
+  </div>
+  <div class='banner_img bd'>
+    <ul>
+		<li><a href='#'><img src="/public/images/banner3.jpg" height="342"></a></li>
+    </ul>
+  </div>
+</div>
+<script>jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+{dede:list pagesize='100'}
+<div class="baoliao_art [field:global name=autoindex runphp=yes]@me=((@me-1)?'':'mt20');[/field:global]">
+<div class="wx_tit_a"><img src="/public/images/tx.png">信仰小市民<span>[field:pubdate function="MyDate('Y-m-d H:i',@me)"/]</span></div>
+<div class="bl_con">
+	<div class="bl_con_a">
+		<a href="[field:arcurl/]"><img src="[field:litpic/]" class="slt"></a>
+	</div>
+	<div class="bl_con_d">
+    <p>[field:title/]</p>
+    </div>
+	<div class="bl_con_e">
+    	<p>[field:description function="cn_substr(@me,60)"/]...</p>
+    </div>
+    
+</div>
+</div>
+{/dede:list}
+
+</body>
+</html>

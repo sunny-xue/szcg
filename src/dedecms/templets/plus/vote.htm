@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>评选结束</title>
+<link href="/public/css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/public/js/jquery-1.11.0.js"></script>
+<script type='text/javascript' src="/public/js/zsy.js"></script>
+
+<script type='text/javascript' src="/public/js/SuperSlide.js"></script>
+
+</head>
+
+<body>
+<div class='banner w640 center'>
+  <div class='banner_ul hd'>
+    <ul>
+    </ul>
+  </div>
+  <div class='banner_img bd'>
+    <ul>
+		<li><a href='#'><img src="/public/images/tp.jpg" height="342"></a></li>
+    </ul>
+  </div>
+</div>
+<script>jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+<div class="px">
+<div class="px_tit">爱在父亲节</div>
+<div class="px_data">2017-02-03  至  2017-02-28</div>
+<div class="px_desc">中国是一个历史悠久的文明古国，历来重视文明礼貌，素有‘礼仪之邦’’的美誉。古人云：不学礼无以立，人无礼则不生，事无礼则不成，国无礼则不宁。</div>
+<div class="px_jg">评选结果</div>
+<ul>
+	<?php echo $votelist?>
+
+</ul>
+
+
+</div>
+
+
+
+</body>
+</html>
